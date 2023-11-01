@@ -17,6 +17,7 @@ namespace GravityDO  // TODO:submit code to WildernessLabs and fit in their spac
     {
         // reference voltage from 100% saturated reading
         private Voltage referenceVoltage;
+        private Voltage currentVoltage;
 
         /// <summary>
         /// Creates a new GravityDOsensor object from existing analog input port
@@ -33,57 +34,82 @@ namespace GravityDO  // TODO:submit code to WildernessLabs and fit in their spac
         /// 3.3V reference voltage
         /// </summary>
         /// <param name="pin">AnalogChannel connected to the sensor.</param>
-        public GravityDOsensor(IPin pin) : base (pin.CreateAnalogInputPort(10,
-            TimeSpan.FromMilliseconds(10),
-            new Voltage(3.3)))
+        public GravityDOsensor(IPin pin) : base(pin.CreateAnalogInputPort(10,
+            TimeSpan.FromMilliseconds(10), new Voltage(3.3)))
         { }
 
 
-        public async setReference ()
+        /// <summary>
+        /// Reads the sensor and saves the voltage as the referenceVoltage
+        /// </summary>
+        public async void SetReferenceVoltage()
         {
-            referenceVoltage = await this.Read();
-        }
-        
-        public override TimeSpan UpdateInterval { get => base.UpdateInterval; protected set => base.UpdateInterval = value; }
-
-        public override bool Equals(object obj)
-        {
-            return base.Equals(obj);
+           referenceVoltage = await Read();
         }
 
-        public override int GetHashCode()
+        /// <summary>
+        /// Reads the sensor and sets field for current voltage
+        /// by referenceVoltage
+        /// </summary>
+        public async void SetCurrentVoltage()
         {
-            return base.GetHashCode();
+            currentVoltage=await Read();
         }
 
-        public override Task<Voltage> Read()
+        /// <summary>
+        /// Calculates and returns %saturation (current/reference * 100)
+        /// </summary>
+        /// <returns></returns>
+        public double GetSaturation()
         {
-            return base.Read();
+            return (currentVoltage.Volts / referenceVoltage.Volts) * 100;
         }
 
-        public override void StartUpdating(TimeSpan? updateInterval)
-        {
-            base.StartUpdating(updateInterval);
-        }
-
-        public override void StopUpdating()
-        {
-            base.StopUpdating();
-        }
-
-        public override string ToString()
-        {
-            return base.ToString();
-        }
-
-        protected override void RaiseEventsAndNotify(IChangeResult<Voltage> changeResult)
-        {
-            base.RaiseEventsAndNotify(changeResult);
-        }
-
-        protected override Task<Voltage> ReadSensor()
-        {
-            return base.ReadSensor();
-        }
     }
 }
+
+
+
+    /*
+    public override TimeSpan UpdateInterval { get => base.UpdateInterval; protected set => base.UpdateInterval = value; }
+
+    public override bool Equals(object obj)
+    {
+        return base.Equals(obj);
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
+
+    public override Task<Voltage> Read()
+    {
+        return base.Read();
+    }
+
+    public override void StartUpdating(TimeSpan? updateInterval)
+    {
+        base.StartUpdating(updateInterval);
+    }
+
+    public override void StopUpdating()
+    {
+        base.StopUpdating();
+    }
+
+    public override string ToString()
+    {
+        return base.ToString();
+    }
+
+    protected override void RaiseEventsAndNotify(IChangeResult<Voltage> changeResult)
+    {
+        base.RaiseEventsAndNotify(changeResult);
+    }
+
+    protected override Task<Voltage> ReadSensor()
+    {
+        return base.ReadSensor();
+    }
+    */

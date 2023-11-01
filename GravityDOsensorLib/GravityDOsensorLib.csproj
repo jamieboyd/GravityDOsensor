@@ -6,4 +6,7 @@
   <ItemGroup>
     <PackageReference Include="Meadow.Foundation" Version="*" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\.editorconfig" />
+  </ItemGroup>
 </Project>
