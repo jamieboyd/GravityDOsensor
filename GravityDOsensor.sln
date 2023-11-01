@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1706.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravityDOsensorLib", "GravityDOsensorLib\GravityDOsensorLib.csproj", "{2A4478E5-7D9B-4D04-8D74-3F305683FAFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravityDOsensorApp", "GravityDOsensorApp\GravityDOsensorApp.csproj", "{51A141AC-87B3-4B72-B08C-308DEE62D8BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A4478E5-7D9B-4D04-8D74-3F305683FAFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A4478E5-7D9B-4D04-8D74-3F305683FAFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A4478E5-7D9B-4D04-8D74-3F305683FAFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A4478E5-7D9B-4D04-8D74-3F305683FAFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51A141AC-87B3-4B72-B08C-308DEE62D8BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51A141AC-87B3-4B72-B08C-308DEE62D8BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51A141AC-87B3-4B72-B08C-308DEE62D8BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51A141AC-87B3-4B72-B08C-308DEE62D8BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {72A427C0-E740-4EC2-8D25-957705B1A465}
+	EndGlobalSection
+EndGlobal
