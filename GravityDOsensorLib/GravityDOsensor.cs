@@ -34,17 +34,25 @@ namespace GravityDO  // TODO:submit code to WildernessLabs and fit in their spac
         /// 3.3V reference voltage
         /// </summary>
         /// <param name="pin">AnalogChannel connected to the sensor.</param>
-        public GravityDOsensor(IPin pin) : base(pin.CreateAnalogInputPort(10,
-            TimeSpan.FromMilliseconds(10), new Voltage(3.3)))
+        public GravityDOsensor(
+            IPin pin,
+            int sampleCount = 10,
+            TimeSpan? sampleInterval = null,
+            Voltage? voltage = null)
+            : this(pin.CreateAnalogInputPort(
+                    sampleCount,
+                    sampleInterval ?? TimeSpan.FromMilliseconds(40),
+                    voltage ?? new Voltage(3.3)))
         { }
+  
 
 
-        /// <summary>
-        /// Reads the sensor and saves the voltage as the referenceVoltage
-        /// </summary>
-        public async void SetReferenceVoltage()
+    /// <summary>
+    /// Reads the sensor and saves the voltage as the referenceVoltage
+    /// </summary>
+    public async void SetReferenceVoltage()
         {
-           referenceVoltage = await Read();
+        referenceVoltage = await Read();
         }
 
         /// <summary>
@@ -53,7 +61,7 @@ namespace GravityDO  // TODO:submit code to WildernessLabs and fit in their spac
         /// </summary>
         public async void SetCurrentVoltage()
         {
-            currentVoltage=await Read();
+        currentVoltage=await Read();
         }
 
         /// <summary>
@@ -62,54 +70,7 @@ namespace GravityDO  // TODO:submit code to WildernessLabs and fit in their spac
         /// <returns></returns>
         public double GetSaturation()
         {
-            return (currentVoltage.Volts / referenceVoltage.Volts) * 100;
+        return (currentVoltage.Volts / referenceVoltage.Volts) * 100;
         }
-
     }
 }
-
-
-
-    /*
-    public override TimeSpan UpdateInterval { get => base.UpdateInterval; protected set => base.UpdateInterval = value; }
-
-    public override bool Equals(object obj)
-    {
-        return base.Equals(obj);
-    }
-
-    public override int GetHashCode()
-    {
-        return base.GetHashCode();
-    }
-
-    public override Task<Voltage> Read()
-    {
-        return base.Read();
-    }
-
-    public override void StartUpdating(TimeSpan? updateInterval)
-    {
-        base.StartUpdating(updateInterval);
-    }
-
-    public override void StopUpdating()
-    {
-        base.StopUpdating();
-    }
-
-    public override string ToString()
-    {
-        return base.ToString();
-    }
-
-    protected override void RaiseEventsAndNotify(IChangeResult<Voltage> changeResult)
-    {
-        base.RaiseEventsAndNotify(changeResult);
-    }
-
-    protected override Task<Voltage> ReadSensor()
-    {
-        return base.ReadSensor();
-    }
-    */

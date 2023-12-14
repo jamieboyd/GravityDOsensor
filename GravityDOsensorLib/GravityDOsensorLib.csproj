@@ -4,7 +4,9 @@
     <OutputType>Library</OutputType>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Meadow.Foundation" Version="*" />
+    <PackageReference Include="Meadow.Foundation" Version="1.6.0.2-beta" />
+    <PackageReference Include="Meadow" Version="1.6.0.2-beta" />
+    <PackageReference Include="Meadow.ProjectLab" Version="1.6.0.2-beta" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.editorconfig" />

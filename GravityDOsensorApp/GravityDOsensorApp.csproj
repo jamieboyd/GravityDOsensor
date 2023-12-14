@@ -6,8 +6,10 @@
     <AssemblyName>App</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Meadow.F7" Version="*" />
-    <PackageReference Include="Meadow.Foundation" Version="*" />
+    <PackageReference Include="Meadow.F7" Version="1.6.0.2-beta" />
+    <PackageReference Include="Meadow.Foundation" Version="1.6.0.2-beta" />
+    <PackageReference Include="meadow" Version="1.6.0.2-beta" />
+    <PackageReference Include="Meadow.ProjectLab" Version="1.6.0.2-beta" />
   </ItemGroup>
   <ItemGroup>
     <None Include="meadow.config.yaml">

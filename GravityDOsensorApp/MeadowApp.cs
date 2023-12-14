@@ -15,15 +15,15 @@ namespace DOsensor_Sample
 
         private GravityDOsensor DOsensor;
 
-        double lastSaturation, thisSaturation, difference;
+        double lastSaturation=100, thisSaturation, difference;
 
         public override Task Initialize()
         {
             Console.WriteLine("Initialize...");
-            DOsensor = new GravityDOsensor(pin: Device.Pins.A04);
+            //DOsensor = new GravityDOsensor(pin: Device.Pins.A04);
+            DOsensor = new GravityDOsensor(Device.Pins.A04.CreateAnalogInputPort(1));
             Console.WriteLine("Setting Reference Value...");
             DOsensor.SetReferenceVoltage();
-            lastSaturation = 100.0;
             var consumer = GravityDOsensor.CreateObserver(
                     handler: result => Console.WriteLine($"Saturation = {thisSaturation}% : {difference}% change in saturation"),
                     filter: result =>
